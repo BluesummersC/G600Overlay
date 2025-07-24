@@ -16,47 +16,10 @@
             position: fixed;
             bottom: 0;
         }
-        #bar1 {
-            border: 1px solid #eeff00;
-        }
-        #bar2 {
-            border: 1px solid #eeff00;
-            margin-left: -1px;
-        }
-        #bar3 {
-            border: 1px solid #eeff00;
-            margin-left: -1px;
-        }
-        #bar4 {
-            border: 1px solid #eeff00;
-            margin-left: -1px;
-        }
     </style>
   </head>
   <body>
-    <div id="mainDiv">
-        <canvas id="bar1" width="10px" height="20px"></canvas>
-        <canvas id="bar2" width="10px" height="20px"></canvas>
-        <canvas id="bar3" width="10px" height="20px"></canvas>
-        <canvas id="bar4" width="10px" height="20px"></canvas>
-    </div>
-    <script>
-        window.bridge.receive("fromMain", (data) => {
-            console.log(data);
-            document.getElementById('mainDiv').style.left = data.Rift1.bars.offsetLeft + "px";
-            document.getElementById('mainDiv').style.marginBottom = data.Rift1.bars.offsetBottom + "px";
-            document.getElementById('bar1').width = data.Rift1.bars.width;
-            document.getElementById('bar2').width = data.Rift1.bars.width;
-            document.getElementById('bar3').width = data.Rift1.bars.width;
-            document.getElementById('bar4').width = data.Rift1.bars.width;
-            document.getElementById('bar1').height = data.Rift1.bars.height;
-            document.getElementById('bar2').height = data.Rift1.bars.height;
-            document.getElementById('bar3').height = data.Rift1.bars.height;
-            document.getElementById('bar4').height = data.Rift1.bars.height;
-        });
-        window.bridge.send("toMain", "readConfig")
-
-    </script>
+    <div id="mainDiv" ></div>
   </body>
-  <!-- <script src="./renderer.js"></script> -->
+  <script src="./overlay.js"></script>
 </html>

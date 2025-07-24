@@ -1,11 +1,36 @@
 {
-    "Rift1": {
-        "bars": {
-            "width": 140,
-            "height": 200,
-            "offsetBottom": 27,
-            "offsetLeft": 999,
-            "bar": [
+    "last_active": "Rift1",
+    "layouts": {
+        "Rift1": {
+            "width": "140",
+            "height": "200",
+            "offsetBottom": "27",
+            "offsetLeft": "999",
+            "bars": [
+                {
+                    "marginLeft": 0,
+                    "borderColor": "eeff00"
+                },
+                {
+                    "marginLeft": -1,
+                    "borderColor": "eeff00"
+                },
+                {
+                    "marginLeft": -1,
+                    "borderColor": "eeff00"
+                },
+                {
+                    "marginLeft": -1,
+                    "borderColor": "eeff00"
+                }
+            ]
+        },
+        "Rift2": {
+            "width": "200",
+            "height": "400",
+            "offsetBottom": "0",
+            "offsetLeft": "800",
+            "bars": [
                 {
                     "marginLeft": 0,
                     "borderColor": "eeff00"

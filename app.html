@@ -36,7 +36,8 @@
   <body>
     <div id="mainDiv">
         <button type="button" onclick="window.bridge.send('toMain', ['refresh'])">Refresh</button>
-        <button type="button" onclick="window.bridge.send('toMain', ['activate'])">Update</button>
+        <button type="button" onclick="saveToFile()">Save</button>
+        <button type="button" onclick="sendUpdate()">Update</button>
         <button type="button" onclick="window.bridge.send('toMain', ['deactivate'])">Close</button>
     </div>
     <div>
@@ -95,7 +96,22 @@
             document.getElementById('inputBottomOffest').value = layouts[selectedLayout].offsetBottom;
             window.bridge.send("toMain", ["updateActive", selectedLayout])
         }
+        function sendUpdate() {
+            let sel = document.getElementById('selectLayouts')
+            let selected = sel.options[sel.selectedIndex].text
+            let layout = layouts[selected]
+            layout.width = document.getElementById('inputWidth').value
+            layout.height = document.getElementById('inputHeight').value
+            layout.offsetLeft = document.getElementById('inputLeftOffset').value
+            layout.offsetBottom = document.getElementById('inputBottomOffest').value
+            window.bridge.send('toMain', ['activate', selected, layout])
 
+        }
+        function saveToFile() {
+            let sel = document.getElementById('selectLayouts')
+            let selected = sel.options[sel.selectedIndex].text
+            window.bridge.send('toMain', ['save', selected])
+        }
     </script>
   </body>
   <!-- <script src="./renderer.js"></script> -->
