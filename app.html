@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <style>
+        div {
+            display: flex;
+            /* position: fixed; */
+            /* bottom: 0; */
+        }
+        #bar1 {
+            border: 1px solid #eeff00;
+        }
+        #bar2 {
+            border: 1px solid #eeff00;
+            margin-left: -1px;
+        }
+        #bar3 {
+            border: 1px solid #eeff00;
+            margin-left: -1px;
+        }
+        #bar4 {
+            border: 1px solid #eeff00;
+            margin-left: -1px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="mainDiv">
+        <button type="button" onclick="window.bridge.send('toMain', ['refresh'])">Refresh</button>
+        <button type="button" onclick="window.bridge.send('toMain', ['activate'])">Update</button>
+        <button type="button" onclick="window.bridge.send('toMain', ['deactivate'])">Close</button>
+    </div>
+    <div>
+        <label for="selectLayouts">Select Layout:</label>
+        <select id="selectLayouts" onchange="selectLayout(this.value)">
+            <option value="0">Select Layout ...</option>
+        </select>
+    </div>
+    <div>
+        <label for="inputWidth">Width:</label>
+        <input type="text" id="inputWidth"><br><br>
+    </div>
+    <div>
+        <label for="inputHeight">Height:</label>
+        <input type="text" id="inputHeight"><br><br>
+    </div>
+    <div>
+        <label for="inputLeftOffset">Left Offest:</label>
+        <input type="text" id="inputLeftOffset"><br><br>
+    </div>
+    <div>
+        <label for="inputBottomOffest">Bottom Offset:</label>
+        <input type="text" id="inputBottomOffest"><br><br>
+    </div>
+    <script>
+        let layouts
+        window.bridge.send("toMain", ["requestConfig"]);
+        window.bridge.receive("configReturn", (data) => {
+            console.log(data);
+            let activeLayout = ""
+            if (Object.hasOwn(data, 'last_active')) {
+                if (data.last_active !== ""){
+                    activeLayout = data.last_active
+                }
+            }
+
+            layouts = data.layouts
+            console.log(layouts)
+            // populate the selection
+            for (let key in layouts) {
+                let opt = document.createElement('option');
+                opt.value = key;
+                opt.innerHTML = key;
+                if (key == activeLayout) {
+                    opt.selected = true
+                    selectLayout(key)
+                }
+                document.getElementById('selectLayouts').append(opt);
+            }
+
+        });
+        function selectLayout(selectedLayout) {
+            document.getElementById('inputWidth').value = layouts[selectedLayout].width;
+            document.getElementById('inputHeight').value = layouts[selectedLayout].height;
+            document.getElementById('inputLeftOffset').value = layouts[selectedLayout].offsetLeft;
+            document.getElementById('inputBottomOffest').value = layouts[selectedLayout].offsetBottom;
+            window.bridge.send("toMain", ["updateActive", selectedLayout])
+        }
+
+    </script>
+  </body>
+  <!-- <script src="./renderer.js"></script> -->
+</html>
