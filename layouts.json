@@ -1,0 +1,28 @@
+{
+    "Rift1": {
+        "bars": {
+            "width": 140,
+            "height": 200,
+            "offsetBottom": 27,
+            "offsetLeft": 999,
+            "bar": [
+                {
+                    "marginLeft": 0,
+                    "borderColor": "eeff00"
+                },
+                {
+                    "marginLeft": -1,
+                    "borderColor": "eeff00"
+                },
+                {
+                    "marginLeft": -1,
+                    "borderColor": "eeff00"
+                },
+                {
+                    "marginLeft": -1,
+                    "borderColor": "eeff00"
+                }
+            ]
+        }
+    }
+}
