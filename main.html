@@ -62,7 +62,7 @@
         <label for="inputBottomOffest">Bottom Offset:</label>
         <input type="text" id="inputBottomOffest"><br><br>
     </div>
-    <script>
+    <!-- <script>
         let layouts
         window.bridge.send("toMain", ["requestConfig"]);
         window.bridge.receive("configReturn", (data) => {
@@ -112,7 +112,7 @@
             let selected = sel.options[sel.selectedIndex].text
             window.bridge.send('toMain', ['save', selected])
         }
-    </script>
+    </script> -->
   </body>
-  <!-- <script src="./renderer.js"></script> -->
+  <script src="./main.js"></script>
 </html>

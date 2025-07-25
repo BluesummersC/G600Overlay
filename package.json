@@ -2,7 +2,7 @@
   "name": "g600bars",
   "version": "1.0.0",
   "description": "Overlay for G600 sidekeys",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
